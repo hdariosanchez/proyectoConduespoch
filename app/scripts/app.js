@@ -18,6 +18,10 @@ angular.module('proyectoConduespochEpApp', [
         templateUrl: 'views/estudiante.html',
         controller: 'EstudianteCtrl'
       })
+      .when('/docente', {
+        templateUrl: 'views/docente.html',
+        controller: 'DocenteCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
