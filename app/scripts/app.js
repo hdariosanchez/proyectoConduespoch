@@ -1,11 +1,12 @@
 'use strict';
 
-angular.module('proyectoConduespochEpApp', [
+var proyectoConduespochEpApp = angular.module('proyectoConduespochEpApp', [
   'ngAnimate',
   'ngCookies',
   'ngResource',
   'ngRoute',
   'ngSanitize',
+  'ui.bootstrap',
   'ngTouch'
 ])
   .config(function ($routeProvider) {

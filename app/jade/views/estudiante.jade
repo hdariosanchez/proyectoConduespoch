@@ -1,1 +1,119 @@
-h1 kdfñadhf
+.container.auth
+  p {{estudianteListado}}
+  p {{a}}
+  #big-form.well.auth-box
+    form
+      fieldset
+        // Text input
+        .form-group
+          label.control-label(for='textinput') Username
+          div
+            input#textinput.form-control.input-md(name='textinput', placeholder='Username', type='text')
+            span.help-block help
+        // Password input
+        .form-group
+          label.control-label(for='passwordinput') Password
+          div
+            input#passwordinput.form-control.input-md(name='passwordinput', placeholder='Password', type='password')
+            span.help-block help
+        // Select Basic
+        .form-group
+          label.control-label(for='selectbasic') Country
+          div
+            select#selectbasic.form-control(name='selectbasic')
+              option(value='1') Option one
+              option(value='2') Option two
+        // Multiple Radios
+        .form-group
+          label.control-label(for='radios') Are you awesome
+          div
+            .radio
+              label(for='radios-0')
+                input#radios-0(name='radios', value='1', checked='checked', type='radio')
+                |                   Yes
+            .radio
+              label(for='radios-1')
+                input#radios-1(name='radios', value='2', type='radio')
+                |                   No
+        // Button
+        .form-group
+          label.control-label(for='singlebutton') Do you like this button
+          div
+            button#singlebutton.btn.btn-primary(name='singlebutton') Button
+        .form-group
+          label.control-label(for='singlebutton') And this?
+          div
+            button#singlebutton.btn.btn-default(name='singlebutton') Button
+        // Button (Double)
+        .form-group
+          label.control-label(for='button1id') Double the action
+          div
+            button#button1id.btn.btn-success(name='button1id') Good Button
+            button#button2id.btn.btn-danger(name='button2id') Scary Button
+        // File Button
+        .form-group
+          label.control-label(for='filebutton') Avatar
+          div
+            input#filebutton.input-file(name='filebutton', type='file')
+        // Select Multiple
+        .form-group
+          label.control-label(for='selectmultiple') Category
+          div
+            select#selectmultiple.form-control(name='selectmultiple', multiple='multiple')
+              option(value='1') Option one
+              option(value='2') Option two
+        // Multiple Radios (inline)
+        .form-group
+          label.control-label(for='radios') Do you like pie?
+          div
+            label.radio-inline(for='radios-0')
+              input#radios-0(name='radios', value='1', checked='checked', type='radio')
+              |                 yes
+            label.radio-inline(for='radios-1')
+              input#radios-1(name='radios', value='2', type='radio')
+              |                 No
+            label.radio-inline(for='radios-2')
+              input#radios-2(name='radios', value='3', type='radio')
+              |                 what is pie?
+            label.radio-inline(for='radios-3')
+              input#radios-3(name='radios', value='4', type='radio')
+              |                 I hate it!
+        // Multiple Checkboxes
+        .form-group
+          label.control-label(for='checkboxes') Extra features
+          div
+            .checkbox
+              label(for='checkboxes-0')
+                input#checkboxes-0(name='checkboxes', value='1', type='checkbox')
+                |                   Paper plains
+            .checkbox
+              label(for='checkboxes-1')
+                input#checkboxes-1(name='checkboxes', value='2', type='checkbox')
+                |                   Iron man
+        // Multiple Checkboxes (inline)
+        .form-group
+          label.control-label(for='checkboxes') Any more?
+          div
+            label.checkbox-inline(for='checkboxes-0')
+              input#checkboxes-0(name='checkboxes', value='1', type='checkbox')
+              |                 One
+            label.checkbox-inline(for='checkboxes-1')
+              input#checkboxes-1(name='checkboxes', value='2', type='checkbox')
+              |                 Two
+            label.checkbox-inline(for='checkboxes-2')
+              input#checkboxes-2(name='checkboxes', value='3', type='checkbox')
+              |                 Drum and bass
+            label.checkbox-inline(for='checkboxes-3')
+              input#checkboxes-3(name='checkboxes', value='4', type='checkbox')
+              |                 Dub
+        // Search input
+        .form-group
+          label.control-label(for='searchinput') Search Input
+          div
+            input#searchinput.form-control.input-md(name='searchinput', placeholder='placeholder', type='search')
+            p.help-block help
+        // Textarea
+        .form-group
+          label.control-label(for='textarea') Text Area
+          div
+            textarea#textarea.form-control(name='textarea') default text

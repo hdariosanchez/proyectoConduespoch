@@ -1,2 +1,156 @@
 
-<h1>kdfñadhf</h1>
+<div class="container auth">
+  <p>{{estudianteListado}}</p>
+  <p>{{a}}</p>
+  <div id="big-form" class="well auth-box">
+    <form>
+      <fieldset>
+        <!-- Text input-->
+        <div class="form-group">
+          <label for="textinput" class="control-label">Username</label>
+          <div>
+            <input id="textinput" name="textinput" placeholder="Username" type="text" class="form-control input-md"/><span class="help-block">help</span>
+          </div>
+        </div>
+        <!-- Password input-->
+        <div class="form-group">
+          <label for="passwordinput" class="control-label">Password</label>
+          <div>
+            <input id="passwordinput" name="passwordinput" placeholder="Password" type="password" class="form-control input-md"/><span class="help-block">help</span>
+          </div>
+        </div>
+        <!-- Select Basic-->
+        <div class="form-group">
+          <label for="selectbasic" class="control-label">Country</label>
+          <div>
+            <select id="selectbasic" name="selectbasic" class="form-control">
+              <option value="1">Option one</option>
+              <option value="2">Option two</option>
+            </select>
+          </div>
+        </div>
+        <!-- Multiple Radios-->
+        <div class="form-group">
+          <label for="radios" class="control-label">Are you awesome</label>
+          <div>
+            <div class="radio">
+              <label for="radios-0">
+                <input id="radios-0" name="radios" value="1" checked="checked" type="radio"/>                  Yes
+              </label>
+            </div>
+            <div class="radio">
+              <label for="radios-1">
+                <input id="radios-1" name="radios" value="2" type="radio"/>                  No
+              </label>
+            </div>
+          </div>
+        </div>
+        <!-- Button-->
+        <div class="form-group">
+          <label for="singlebutton" class="control-label">Do you like this button</label>
+          <div>
+            <button id="singlebutton" name="singlebutton" class="btn btn-primary">Button</button>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="singlebutton" class="control-label">And this?</label>
+          <div>
+            <button id="singlebutton" name="singlebutton" class="btn btn-default">Button</button>
+          </div>
+        </div>
+        <!-- Button (Double)-->
+        <div class="form-group">
+          <label for="button1id" class="control-label">Double the action</label>
+          <div>
+            <button id="button1id" name="button1id" class="btn btn-success">Good Button</button>
+            <button id="button2id" name="button2id" class="btn btn-danger">Scary Button</button>
+          </div>
+        </div>
+        <!-- File Button-->
+        <div class="form-group">
+          <label for="filebutton" class="control-label">Avatar</label>
+          <div>
+            <input id="filebutton" name="filebutton" type="file" class="input-file"/>
+          </div>
+        </div>
+        <!-- Select Multiple-->
+        <div class="form-group">
+          <label for="selectmultiple" class="control-label">Category</label>
+          <div>
+            <select id="selectmultiple" name="selectmultiple" multiple="multiple" class="form-control">
+              <option value="1">Option one</option>
+              <option value="2">Option two</option>
+            </select>
+          </div>
+        </div>
+        <!-- Multiple Radios (inline)-->
+        <div class="form-group">
+          <label for="radios" class="control-label">Do you like pie?</label>
+          <div>
+            <label for="radios-0" class="radio-inline">
+              <input id="radios-0" name="radios" value="1" checked="checked" type="radio"/>                yes
+            </label>
+            <label for="radios-1" class="radio-inline">
+              <input id="radios-1" name="radios" value="2" type="radio"/>                No
+            </label>
+            <label for="radios-2" class="radio-inline">
+              <input id="radios-2" name="radios" value="3" type="radio"/>                what is pie?
+            </label>
+            <label for="radios-3" class="radio-inline">
+              <input id="radios-3" name="radios" value="4" type="radio"/>                I hate it!
+            </label>
+          </div>
+        </div>
+        <!-- Multiple Checkboxes-->
+        <div class="form-group">
+          <label for="checkboxes" class="control-label">Extra features</label>
+          <div>
+            <div class="checkbox">
+              <label for="checkboxes-0">
+                <input id="checkboxes-0" name="checkboxes" value="1" type="checkbox"/>                  Paper plains
+              </label>
+            </div>
+            <div class="checkbox">
+              <label for="checkboxes-1">
+                <input id="checkboxes-1" name="checkboxes" value="2" type="checkbox"/>                  Iron man
+              </label>
+            </div>
+          </div>
+        </div>
+        <!-- Multiple Checkboxes (inline)-->
+        <div class="form-group">
+          <label for="checkboxes" class="control-label">Any more?</label>
+          <div>
+            <label for="checkboxes-0" class="checkbox-inline">
+              <input id="checkboxes-0" name="checkboxes" value="1" type="checkbox"/>                One
+            </label>
+            <label for="checkboxes-1" class="checkbox-inline">
+              <input id="checkboxes-1" name="checkboxes" value="2" type="checkbox"/>                Two
+            </label>
+            <label for="checkboxes-2" class="checkbox-inline">
+              <input id="checkboxes-2" name="checkboxes" value="3" type="checkbox"/>                Drum and bass
+            </label>
+            <label for="checkboxes-3" class="checkbox-inline">
+              <input id="checkboxes-3" name="checkboxes" value="4" type="checkbox"/>                Dub
+            </label>
+          </div>
+        </div>
+        <!-- Search input-->
+        <div class="form-group">
+          <label for="searchinput" class="control-label">Search Input</label>
+          <div>
+            <input id="searchinput" name="searchinput" placeholder="placeholder" type="search" class="form-control input-md"/>
+            <p class="help-block">help</p>
+          </div>
+        </div>
+        <!-- Textarea-->
+        <div class="form-group">
+          <label for="textarea" class="control-label">Text Area</label>
+          <div>
+            <textarea id="textarea" name="textarea" class="form-control">default text</textarea>
+          </div>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</div>
