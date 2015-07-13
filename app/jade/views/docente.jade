@@ -7,9 +7,9 @@
           | DOCENTE
           span.menu-icon.glyphicon.glyphicon-transfer
       li.sidebar-title
-        span NAVIGATION
+        span NAVEGACION
       li.sidebar-list
-        a(href='#')
+        a.page-scroll(href='#')
           | Dashboard
           span.menu-icon.fa.fa-tachometer
       li.sidebar-list
@@ -70,6 +70,38 @@
       // End Header Bar
       // Main Content
       div(ui-view='')
+        .col-md-3
+          | Filtrar:
+          input(type='search', ng-model='q', placeholder='Filtrar asignatura', aria-label='filtrar asignatura')
+          ul.example-animate-container
+            li.animate-repeat(ng-repeat='asignatura in listadoAsignatura | filter:q as results')
+              a(ng-click="tester(asignatura)") {{asignatura.strNombre}}.
+            li.animate-repeat(ng-if='results.length == 0')
+              strong Resultado indefinido.
+        .col-md-9
+          .gridStyle(ng-grid="gridOptions")
+        .row.text-center
+          .col-md-4
+            span.fa-stack.fa-4x
+              i.fa.fa-circle.fa-stack-2x.text-primary
+              i.fa.fa-spinner.fa-spin.fa-stack-1x.fa-inverse
+            h4.service-heading Conduccion Profesional - Licencia "C"
+            p.text-muted
+              | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.
+          .col-md-4
+            span.fa-stack.fa-4x
+              i.fa.fa-circle.fa-stack-2x.text-primary
+              i.fa.fa-refresh.fa-spin.fa-stack-1x.fa-inverse
+            h4.service-heading Conduccion Profesional (Proximamente) - Licencia "D"
+            p.text-muted
+              | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.
+          .col-md-4
+            span.fa-stack.fa-4x
+              i.fa.fa-circle.fa-stack-2x.text-primary
+              i.fa.fa-cog.fa-spin.fa-stack-1x.fa-inverse
+            h4.service-heading Sistema Informatico - Evaluaciones Digitales.
+            p.text-muted
+              | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.
     // End Page Content
   // End Content Wrapper
 // End Page Wrapper

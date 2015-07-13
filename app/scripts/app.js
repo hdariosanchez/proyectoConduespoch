@@ -6,7 +6,9 @@ var proyectoConduespochEpApp = angular.module('proyectoConduespochEpApp', [
   'ngResource',
   'ngRoute',
   'ngSanitize',
+  'ngTouch',
   'ui.bootstrap',
+  'ngGrid',
   'ngTouch'
 ])
   .config(function ($routeProvider) {

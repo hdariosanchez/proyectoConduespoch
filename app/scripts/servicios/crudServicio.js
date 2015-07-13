@@ -11,6 +11,12 @@ proyectoConduespochEpApp.factory('crudTodo', function ($http) {
       return $http.get(url);    // regreso el resultado para realizar una "promise" para obtener datos por success or error.
     },
 
+    getFiltrado: function (urlController, todo) {
+      var url = urlController;
+      console.log('dentro del servijsdjf'+todo);
+      return $http.post(url, todo);
+    },
+
     create: function (urlController, todo) {
       var url = urlController;
       return $http.post(url, todo);

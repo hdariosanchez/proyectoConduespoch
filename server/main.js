@@ -12,6 +12,8 @@ var routes = require('./routes');
 var app = express();
 
 var routeEstudiante = require('./routes/routeEstudiante');
+var routeDocentePeriodoAsignatura = require('./routes/routeDocentePeriodoAsignatura');
+var routePregunta = require('./routes/routePregunta');
 
 
 // view engine setup
@@ -30,6 +32,11 @@ app.use(express.static(path.join('.', 'app/model')));
 
 app.get('/api/awesomeThings', routes.awesomeThings);
 app.route('/api/estudiante').get(routeEstudiante.getlistado);
+
+app.route('/api/asignatura').post(routeDocentePeriodoAsignatura.getlistado);
+
+app.route('/api/pregunta').get(routePregunta.getListado);
+
 
 
 // catch 404 and forward to error handler

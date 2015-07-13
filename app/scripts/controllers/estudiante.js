@@ -13,8 +13,7 @@ angular.module('proyectoConduespochEpApp')
 
     crudTodo.get(urlEstudiante)
       .success(function(dato){
-        $scope.estudianteListado = dato;
-        console.log('datos posibles' +dato);
+        $scope.listadoEstudiante = dato;
       })
       .error(function(err){
         console.log('Error en controlador EstudianteCtrl en crudTodo.get(urlEstudiante): '+err);
