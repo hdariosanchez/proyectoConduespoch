@@ -14,6 +14,7 @@ var app = express();
 var routeEstudiante = require('./routes/routeEstudiante');
 var routeDocentePeriodoAsignatura = require('./routes/routeDocentePeriodoAsignatura');
 var routePregunta = require('./routes/routePregunta');
+var routeTP = require('./routes/routeTipoPregunta');
 
 
 // view engine setup
@@ -37,6 +38,20 @@ app.route('/api/asignatura').post(routeDocentePeriodoAsignatura.getlistado);
 
 app.route('/api/pregunta').get(routePregunta.getListado);
 
+app.route('/api/tipoPregunta').get(routeTP.getlistadoTipo);
+
+/*
+app.route('/api/pregunta/upload').post(function(req, res){
+  console.log('in POST...');
+  flow.post(req, function(status, filename, original_filename, identifier) {
+    console.log('POST', status, original_filename, identifier);
+    res.send(200, {
+      // NOTE: Uncomment this funciton to enable cross-domain request.
+      'Access-Control-Allow-Origin': '*'
+    });
+  });
+});
+*/
 
 
 // catch 404 and forward to error handler

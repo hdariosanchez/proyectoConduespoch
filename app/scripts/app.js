@@ -9,9 +9,22 @@ var proyectoConduespochEpApp = angular.module('proyectoConduespochEpApp', [
   'ngTouch',
   'ui.bootstrap',
   'ngGrid',
+  'flow',
+  'ui.tree',
   'ngTouch'
 ])
-  .config(function ($routeProvider) {
+  .config(function ($routeProvider, flowFactoryProvider) {
+
+    flowFactoryProvider.defaults = {
+      target: '/api/pregunta/upload',
+      permanentErrors:[404, 500, 501],
+      minFileSize: 0
+    };
+    // You can also set default events:
+    flowFactoryProvider.on('catchAll', function (event) {
+
+    });
+
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',

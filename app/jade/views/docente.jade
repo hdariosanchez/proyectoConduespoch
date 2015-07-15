@@ -70,38 +70,114 @@
       // End Header Bar
       // Main Content
       div(ui-view='')
-        .col-md-3
-          | Filtrar:
-          input(type='search', ng-model='q', placeholder='Filtrar asignatura', aria-label='filtrar asignatura')
-          ul.example-animate-container
-            li.animate-repeat(ng-repeat='asignatura in listadoAsignatura | filter:q as results')
-              a(ng-click="tester(asignatura)") {{asignatura.strNombre}}.
-            li.animate-repeat(ng-if='results.length == 0')
-              strong Resultado indefinido.
-        .col-md-9
-          .gridStyle(ng-grid="gridOptions")
-        .row.text-center
-          .col-md-4
-            span.fa-stack.fa-4x
-              i.fa.fa-circle.fa-stack-2x.text-primary
-              i.fa.fa-spinner.fa-spin.fa-stack-1x.fa-inverse
-            h4.service-heading Conduccion Profesional - Licencia "C"
-            p.text-muted
-              | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.
-          .col-md-4
-            span.fa-stack.fa-4x
-              i.fa.fa-circle.fa-stack-2x.text-primary
-              i.fa.fa-refresh.fa-spin.fa-stack-1x.fa-inverse
-            h4.service-heading Conduccion Profesional (Proximamente) - Licencia "D"
-            p.text-muted
-              | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.
-          .col-md-4
-            span.fa-stack.fa-4x
-              i.fa.fa-circle.fa-stack-2x.text-primary
-              i.fa.fa-cog.fa-spin.fa-stack-1x.fa-inverse
-            h4.service-heading Sistema Informatico - Evaluaciones Digitales.
-            p.text-muted
-              | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.
+        .row
+          .col-md-3
+            | Filtrar:
+            input(type='search', ng-model='q', placeholder='Filtrar asignatura', aria-label='filtrar asignatura')
+            ul.example-animate-container
+              li.animate-repeat(ng-repeat='asignatura in listadoAsignatura | filter:q as results')
+                a(ng-click="seleccionMateriaTipoPregunta(asignatura)") {{asignatura.strNombre}}.
+              li.animate-repeat(ng-if='results.length == 0')
+                strong Resultado indefinido.
+          .col-md-9
+            .gridStyle(ng-grid="gridOptions")
+        .row
+          .col-md-3
+            .animate-show(ng-show='visible')
+              span.glyphicon.glyphicon-thumbs-up
+              strong  SELECCIONE LA ASIGNATURA.
+              br
+              strong 1.
+              | Debe seleccionar la asignatura a la cual se ligara la pregunta a persistir.
+              br
+              strong 2.
+              | Continuar con el flujo de trabajo.
+            .animate-show(ng-hide='visible')
+              | Materia seleccionada:
+              strong  {{NombreMateria}}
+              select(ng-model="tipoPreguntaModel", ng-options="tipoPregunta as tipoPregunta.strDescripcion for tipoPregunta in listadoTipoPregunta")
+                option(value="") [Tipo Pregunta]
+
+          .col-md-9
+            .animate-show(ng-show='visibleC')
+              form
+                fieldset
+                  // Text input
+                  .form-group
+                    label.control-label(for='strBase') Enunciado
+                    div
+                      input#textinput.form-control.input-md(name='strBase', placeholder='Ingrese el enunciado de la pregunta', type='text', ng-model="pregunta.strBase")
+                      strong Opciones de Respuesta
+                      ul
+                        li(ng-repeat="respuestaC in respuestaCasilla | orderBy: 'intId'")
+                          input(type="checkbox", value="{{respuestaC.intId}}", ng-model="respuestaC.bolCorrecto", name="{{respuestaC.intId}}")
+                          input(name='{{respuestaC.intId}}', placeholder='Ingrese el enunciado de la respuesta', type='text', ng-model="respuestaC.strDescripcion", size=70)
+                          | &nbsp &nbsp
+                          a(ng-click="agregarRespuestaCasilla(respuestaC)")
+                            i.fa.fa-plus &nbsp &nbsp
+                          a(ng-click="tester2(respuestaC)")
+                            i.fa.fa-times
+                      hr
+                      | Selected thing: {{selected}}
+
+            .animate-show(ng-show='visibleT')
+              form
+                fieldset
+                  // Text input
+                  .form-group
+                    label.control-label(for='strBase') Enunciado
+                    div
+                      input#textinput.form-control.input-md(name='strBase', placeholder='Ingrese el enunciado de la pregunta', type='text', ng-model="pregunta.strBase")
+                      strong Opciones de Respuesta
+                      ul
+                        li(ng-repeat="respuestaT in respuestaTest | orderBy: 'intId'")
+                          input(type="radio", value="{{respuestaT.intId}}", ng-model="$parent.selected", name="test")
+                          input(name='{{respuestaT.intId}}', placeholder='Ingrese el enunciado de la respuesta', type='text', ng-model="respuestaT.strDescripcion", size=70)
+                          | &nbsp &nbsp
+                          a(ng-click="agregarRespuestaTest(respuestaT)")
+                            i.fa.fa-plus &nbsp &nbsp
+                          a(ng-click="tester2(respuestaT)")
+                            i.fa.fa-times
+                      hr
+                      | Selected thing: {{selected}}
+
+            .animate-show(ng-show='visibleVF')
+              form
+                fieldset
+                  // Text input
+                  .form-group
+                    label.control-label(for='strBase') Enunciado
+                    div
+                      input#textinput.form-control.input-md(name='strBase', placeholder='Ingrese el enunciado de la pregunta', type='text', ng-model="pregunta.strBase")
+                      strong Opciones de Respuesta
+                      ul
+                        li(ng-repeat="respuestaVF in respuestaVerdadFalso | orderBy: 'intId'")
+                          input(type="radio", value="{{respuestaVF.intId}}", ng-model="$parent.selected", name="test")
+                          |   {{respuestaVF.strDescripcion}}
+                      hr
+                      | Selected thing: {{selected}}
+
+            .animate-show(ng-show='visibleTx')
+              form
+                fieldset
+                  // Text input
+                  .form-group
+                    label.control-label(for='strBase') Enunciado
+                    div
+                      input#textinput.form-control.input-md(name='strBase', placeholder='Ingrese el enunciado de la pregunta', type='text', ng-model="pregunta.strBase")
+                      strong Opciones de Respuesta
+                      ul
+                        li(ng-repeat="respuestaTx in respuestaTexto | orderBy: 'intId'")
+                          input(name='{{respuestaTx.intId}}', placeholder='Ingrese el enunciado de la respuesta', type='text', ng-model="respuestaTx.strDescripcion", size=30)
+                          | &nbsp &nbsp
+                          a(ng-click="agregarRespuestaTexto(respuestaTx)")
+                            i.fa.fa-plus &nbsp &nbsp
+                          a(ng-click="tester2(respuestaTx)")
+                            i.fa.fa-times
+                      hr
+                      | Selected thing: {{selected}}
+
+
     // End Page Content
   // End Content Wrapper
 // End Page Wrapper

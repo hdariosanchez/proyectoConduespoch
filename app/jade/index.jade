@@ -18,12 +18,13 @@ html
     link(rel="stylesheet", href="bower_components/jquery-ui/themes/smoothness/jquery-ui.min.css")
     link(rel='stylesheet', href='bower_components/font-awesome/css/font-awesome.min.css')
     link(rel='stylesheet', href='bower_components/rdash-ui/dist/css/rdash.min.css')
+    link(rel="stylesheet", href="bower_components/angular-ui-tree/dist/angular-ui-tree.min.css")
     link(rel="stylesheet", href="styles/full-slider.css")
     link(rel="stylesheet", href="styles/agency.css")
     link(rel="stylesheet", href="styles/main.css")
     // endbuild
     //- build:head
-  body#page-top(ng-app="proyectoConduespochEpApp")
+  body#page-top(flow-prevent-drop='', flow-drag-enter="dropClass='drag-over'", flow-drag-leave="dropClass=''", ng-app="proyectoConduespochEpApp")
     div(ng-view)
 
     // Google Analytics: change UA-XXXXX-X to be your site's ID.
@@ -49,6 +50,9 @@ html
     script(src="bower_components/angular-touch/angular-touch.js")
     script(src='bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js')
     script(src="bower_components/ng-grid/ng-grid-2.0.14.min.js")
+    script(src="bower_components/flow.js/dist/flow.min.js")
+    script(src="bower_components/ng-flow/dist/ng-flow.min.js")
+    script(src="bower_components/angular-ui-tree/dist/angular-ui-tree.js")
     script(src="js/jquery.js")
     script(src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js")
     script(src="js/classie.js")
