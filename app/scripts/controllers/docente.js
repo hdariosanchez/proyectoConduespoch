@@ -30,6 +30,7 @@ angular.module('proyectoConduespochEpApp')
     $scope.respuestaVerdadFalso = [];
     $scope.respuestaTexto = [];
     $scope.seleccion = [];
+    $scope.radioSeleccion = 0;
     $scope.visible = true;
     $scope.visibleC = false;
     $scope.visibleT = false;
@@ -47,6 +48,7 @@ angular.module('proyectoConduespochEpApp')
       "lgbImagen":"",
       "nodes": []
     };
+    /*
     var test = {
       "intId": "",
       "intIdPregunta": "",
@@ -69,7 +71,7 @@ angular.module('proyectoConduespochEpApp')
       "fltValor": "",
       "intTabular": ""
     };
-
+| */
     crudTodo.getFiltrado(urlAsignatura, docentePeriodoAsignatura) //Funcion para utilizar llamadas a traves de un servicios angular hacia el servidor nodejs.
       .success(function(dato){                                    //Obtiene todas las materias en el periodo actual y el docente en particular.
         $scope.listadoAsignatura = dato;
@@ -142,7 +144,7 @@ angular.module('proyectoConduespochEpApp')
     };
 
     $scope.$watch('tipoPreguntaModel', function(newValue, oldValue){ //Estar escuchando el cambio en el select de tipo pregunta..
-      $scope.pregunta.intIdTipoPregunta = newValue.intId;
+      $scope.pregunta.intIdTipoPregunta = newValue.intId; // Selecciona y persiste en el $scope.pregunta.intIdTipoPregunta para depues utilizar en el ingreso de la base de datos.
 
       switch (parseInt(newValue.intId)){
 
@@ -248,6 +250,21 @@ angular.module('proyectoConduespochEpApp')
       }
     });
 
+    $scope.asignarRadioSeleccion = function(){
+      $scope.respuestaTest.forEach(function(test){
+        if(test.intId == $scope.radioSeleccion){
+          test.bolCorrecto = true;
+
+          console.log('si');
+        }
+        else{
+          test.bolCorrecto = false;
+          console.log($scope.radioSeleccion);
+          console.log('no');
+        }
+      });
+    };
+
     $scope.tester2 =function(scope){
       console.log(JSON.stringify(scope));
     };
@@ -275,7 +292,24 @@ angular.module('proyectoConduespochEpApp')
       bandera=0;
     };
 
+    $scope.eliminarRespuestaCasilla = function(scope){
+      for(var i=0; i<$scope.respuestaCasilla.length; i++){
+
+        if(bandera == 1){
+          $scope.respuestaCasilla[i].intId = $scope.respuestaCasilla[i].intId - 1;
+        }
+
+        if($scope.respuestaCasilla[i].intId == scope.intId && bandera == 0) {
+          $scope.respuestaCasilla.splice(i,1);
+          i-=1;
+          bandera=1;
+        }
+      }
+      bandera=0;
+    };
+
     $scope.agregarRespuestaTest = function(scope){
+      console.log('---------------->>>>>>>>>>>>>> '+ $parent.selected);
       for(var i=0; i<$scope.respuestaTest.length; i++){
 
         if(bandera == 1){
@@ -292,6 +326,22 @@ angular.module('proyectoConduespochEpApp')
             }
           );
           i+=1;
+          bandera=1;
+        }
+      }
+      bandera=0;
+    };
+
+    $scope.eliminarRespuestaTest = function(scope){
+      for(var i=0; i<$scope.respuestaTest.length; i++){
+
+        if(bandera == 1){
+          $scope.respuestaTest[i].intId = $scope.respuestaTest[i].intId - 1;
+        }
+
+        if($scope.respuestaTest[i].intId == scope.intId && bandera == 0) {
+          $scope.respuestaTest.splice(i,1);
+          i-=1;
           bandera=1;
         }
       }
@@ -320,6 +370,21 @@ angular.module('proyectoConduespochEpApp')
       bandera=0;
     };
 
+    $scope.eliminarRespuestaTexto = function(scope){
+      for(var i=0; i<$scope.respuestaTexto.length; i++){
+
+        if(bandera == 1){
+          $scope.respuestaTexto[i].intId = $scope.respuestaTexto[i].intId - 1;
+        }
+
+        if($scope.respuestaTexto[i].intId == scope.intId && bandera == 0) {
+          $scope.respuestaTexto.splice(i,1);
+          i-=1;
+          bandera=1;
+        }
+      }
+      bandera=0;
+    };
 
 
     var mobileView = 992; //Averiguar que mismo.
@@ -348,8 +413,4 @@ angular.module('proyectoConduespochEpApp')
     window.onresize = function() { // sudo !!
       $scope.$apply();
     };
-
-
-
-
   });

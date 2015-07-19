@@ -102,19 +102,25 @@
             .animate-show(ng-show='visibleC')
               form
                 fieldset
-                  // Text input
                   .form-group
-                    label.control-label(for='strBase') Enunciado
-                    div
-                      input#textinput.form-control.input-md(name='strBase', placeholder='Ingrese el enunciado de la pregunta', type='text', ng-model="pregunta.strBase")
+                    .row
+                      .col-xs-10
+                        label.control-label(for='strBase') Enunciado
+                        input#textinput.form-control.input-md(name='strBase', placeholder='Enunciado de pregunta', type='text', ng-model="pregunta.strBase")
+                      .col-xs-2
+                        label.control-label(for='fltValor') Valor
+                        input#textinput.form-control.input-md(name='fltValor', placeholder='Valor', type='number', ng-model="pregunta.fltValor", min="0", max="10")
+                    .row
                       strong Opciones de Respuesta
                       ul
                         li(ng-repeat="respuestaC in respuestaCasilla | orderBy: 'intId'")
                           input(type="checkbox", value="{{respuestaC.intId}}", ng-model="respuestaC.bolCorrecto", name="{{respuestaC.intId}}")
-                          input(name='{{respuestaC.intId}}', placeholder='Ingrese el enunciado de la respuesta', type='text', ng-model="respuestaC.strDescripcion", size=70)
+                          input(name='{{respuestaC.intId}}', placeholder='Respuesta', type='text', ng-model="respuestaC.strDescripcion", size=70)
                           | &nbsp &nbsp
                           a(ng-click="agregarRespuestaCasilla(respuestaC)")
                             i.fa.fa-plus &nbsp &nbsp
+                          a(ng-click="eliminarRespuestaCasilla(respuestaC)")
+                            i.fa.fa-times
                           a(ng-click="tester2(respuestaC)")
                             i.fa.fa-times
                       hr
@@ -123,19 +129,25 @@
             .animate-show(ng-show='visibleT')
               form
                 fieldset
-                  // Text input
                   .form-group
-                    label.control-label(for='strBase') Enunciado
-                    div
-                      input#textinput.form-control.input-md(name='strBase', placeholder='Ingrese el enunciado de la pregunta', type='text', ng-model="pregunta.strBase")
+                    .row
+                      .col-xs-10
+                        label.control-label(for='strBase') Enunciado
+                        input#textinput.form-control.input-md(name='strBase', placeholder='Enunciado de pregunta', type='text', ng-model="pregunta.strBase")
+                      .col-xs-2
+                        label.control-label(for='fltValor') Valor
+                        input#textinput.form-control.input-md(name='fltValor', placeholder='Valor', type='number', ng-model="pregunta.fltValor", min="0", max="10")
+                    .row
                       strong Opciones de Respuesta
                       ul
                         li(ng-repeat="respuestaT in respuestaTest | orderBy: 'intId'")
-                          input(type="radio", value="{{respuestaT.intId}}", ng-model="$parent.selected", name="test")
-                          input(name='{{respuestaT.intId}}', placeholder='Ingrese el enunciado de la respuesta', type='text', ng-model="respuestaT.strDescripcion", size=70)
+                          input(type="radio", value="{{respuestaT.intId}}", ng-model="radioSeleccion", name="test", ng-change="asignarRadioSeleccion()")
+                          input(name='{{respuestaT.intId}}', placeholder='Respuesta', type='text', ng-model="respuestaT.strDescripcion", size=70)
                           | &nbsp &nbsp
                           a(ng-click="agregarRespuestaTest(respuestaT)")
                             i.fa.fa-plus &nbsp &nbsp
+                          a(ng-click="tester2(respuestaT)")
+                            i.fa.fa-times
                           a(ng-click="tester2(respuestaT)")
                             i.fa.fa-times
                       hr
@@ -144,11 +156,15 @@
             .animate-show(ng-show='visibleVF')
               form
                 fieldset
-                  // Text input
                   .form-group
-                    label.control-label(for='strBase') Enunciado
-                    div
-                      input#textinput.form-control.input-md(name='strBase', placeholder='Ingrese el enunciado de la pregunta', type='text', ng-model="pregunta.strBase")
+                    .row
+                      .col-xs-10
+                        label.control-label(for='strBase') Enunciado
+                        input#textinput.form-control.input-md(name='strBase', placeholder='Enunciado de pregunta', type='text', ng-model="pregunta.strBase")
+                      .col-xs-2
+                        label.control-label(for='fltValor') Valor
+                        input#textinput.form-control.input-md(name='fltValor', placeholder='Valor', type='number', ng-model="pregunta.fltValor", min="0", max="10")
+                    .row
                       strong Opciones de Respuesta
                       ul
                         li(ng-repeat="respuestaVF in respuestaVerdadFalso | orderBy: 'intId'")
@@ -160,15 +176,19 @@
             .animate-show(ng-show='visibleTx')
               form
                 fieldset
-                  // Text input
                   .form-group
-                    label.control-label(for='strBase') Enunciado
-                    div
-                      input#textinput.form-control.input-md(name='strBase', placeholder='Ingrese el enunciado de la pregunta', type='text', ng-model="pregunta.strBase")
+                    .row
+                      .col-xs-10
+                        label.control-label(for='strBase') Enunciado
+                        input#textinput.form-control.input-md(name='strBase', placeholder='Enunciado de pregunta', type='text', ng-model="pregunta.strBase")
+                      .col-xs-2
+                        label.control-label(for='fltValor') Valor
+                        input#textinput.form-control.input-md(name='fltValor', placeholder='Valor', type='number', ng-model="pregunta.fltValor", min="0", max="10")
+                    .row
                       strong Opciones de Respuesta
                       ul
                         li(ng-repeat="respuestaTx in respuestaTexto | orderBy: 'intId'")
-                          input(name='{{respuestaTx.intId}}', placeholder='Ingrese el enunciado de la respuesta', type='text', ng-model="respuestaTx.strDescripcion", size=30)
+                          input(name='{{respuestaTx.intId}}', placeholder='Respuesta', type='text', ng-model="respuestaTx.strDescripcion", size=30)
                           | &nbsp &nbsp
                           a(ng-click="agregarRespuestaTexto(respuestaTx)")
                             i.fa.fa-plus &nbsp &nbsp
