@@ -1,5 +1,5 @@
 /**
- * Created by darioh on 11/07/15.
+ * Created by darioh on 11/07/15. desde escritorio
  */
 
 var config = require('../server/config.js');
